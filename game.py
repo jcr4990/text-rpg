@@ -4,6 +4,7 @@ import random
 from enemies import Enemy
 from player import Player
 
+
 class Die:
     """Represents a single die."""
 
@@ -21,22 +22,22 @@ class Die:
 
 def battle(player, enemy):
     while True:
-        # premitigation_damage = str(random.randint(0, player.damage))
-        dmg_dealt = str(random.randint(0, player.damage))
-        enemy.hp = enemy.hp - int(dmg_dealt)
+        dmg_dealt = random.randint(0, player.damage)
+        enemy.hp = enemy.hp - dmg_dealt
         print(f"{player.name} attacks {enemy.name} dealing {dmg_dealt} points of damage! {enemy.hp} health remaining.")
 
-
-        dmg_received = str(random.randint(0, enemy.damage))
-        player.hp = player.hp - int(dmg_received)
-        print(f"{enemy.name} attacks {player.name} dealing {dmg_received} points of damage! {player.hp} health remaining.")
+        premitigated_damage = random.randint(0, enemy.damage)
+        mitigated_damage = player.ac * 0.25
+        dmg_received = premitigated_damage - mitigated_damage
+        player.hp = player.hp - dmg_received
+        print(f"{enemy.name} attacks {player.name} dealing {dmg_received} points of damage! {mitigated_damage} mitigated! {player.hp} health remaining.")
 
         if player.hp <= 0 or enemy.hp <= 0:
             break
 
         input()
 
-#testing combat loop
+# testing combat loop
 # for i in range(20):
 #     player = Player("Macc", 15, 1, [])
 #     enemy = Enemy.random(15)
