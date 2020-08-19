@@ -1,17 +1,4 @@
-class Player:
-    """Represents the player in the game."""
-    def __init__(self, name, hp, ac, damage, inventory, exp):
-        self.name = name
-        self.hp = hp
-        self.ac = ac
-        self.damage = damage
-        self.inventory = inventory
-        self.exp = exp
- 
-    def is_alive(self):
-        return self.hp > 0
-
-
+import random
 
 class Player:
     """Represents the player in the game."""
@@ -20,7 +7,10 @@ class Player:
         self.level = level
         self.exp = exp
         self.inventory = inventory
-        
- 
+        self.hp = (level * 0.1 * 100) + random.randint(0, level * 0.1 * 10)
+        self.ac = (level * 0.1 * 10) + random.randint(0, level * 0.1 * 4)
+        self.damage = (level * 0.1 * 10) + random.randint(0, level * 0.1 * 6)
+
+
     def is_alive(self):
         return self.hp > 0

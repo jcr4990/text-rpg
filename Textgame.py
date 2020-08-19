@@ -50,7 +50,7 @@ Robed man: Who are you? What are you doing here?\n""")
 
 # Initialize Player
 charname = input("Enter your character name:")
-player = Player(charname.capitalize(), 20, 4, 2, [], 1)
+player = Player(charname.capitalize(), 5, 1, [])
 
 input(f"\n{player.name}: My name is {player.name}. I'm afraid I don't know how I got here. May I ask who you are? Where are we?\n")
 
@@ -65,7 +65,7 @@ input("""You are still very confused. Not sure exactly where you are or how you 
 You stand up and walk toward the cave's entrance""")
 
 
-enemy = Enemy.random(150)
+enemy = Enemy.random(5)
 print(f"""\nAs you exit the cave you are immediately spotted by {enemy.name} heading right for you!""")
 
 encounter_decision = input("""
