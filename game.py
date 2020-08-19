@@ -1,3 +1,4 @@
+import os
 import random
 # from random import randint
 # import time
@@ -22,6 +23,7 @@ class Die:
 
 def battle(player, enemy):
     while True:
+        os.system("cls")
         dmg_dealt = random.randint(0, player.damage)
         enemy.hp = enemy.hp - dmg_dealt
         print(f"{player.name} attacks {enemy.name} dealing {round(dmg_dealt)} points of damage! {round(enemy.hp)} health remaining.")
@@ -34,18 +36,21 @@ def battle(player, enemy):
         player.hp = player.hp - dmg_received
         print(f"{enemy.name} attacks {player.name} dealing {round(dmg_received)} points of damage! {round(mitigated_damage)} mitigated! {round(player.hp)} health remaining.")
 
-        if player.hp <= 0 or enemy.hp <= 0:
-            break
+        if enemy.hp <= 0:
+            return True
+
+        if player.hp <= 0:
+            return False
 
         input()
 
-# testing combat loop
-for i in range(20):
-    player = Player("Macc", 15, 1, [])
-    enemy = Enemy.random(15)
-    battle(player, enemy)
-    input()
 
+# testing combat loop
+# for i in range(20):
+#     player = Player("Macc", 15, 1, [])
+#     enemy = Enemy.random(15)
+#     battle(player, enemy)
+#     input()
 
 input("Welcome to blablabla! Press 'Enter' to advance the game dialogue.")
 print("""\nYou awake in a cold dark cave. As you try to get your bearings and figure out how you got here you notice a robed man approaching you carrying a torch.
@@ -79,4 +84,9 @@ encounter_decision = input("""
 """)
 
 if encounter_decision == "1":
-    battle(player, enemy)
+    encounter = battle(player, enemy)
+
+    if encounter:
+        print("VICTORY!")
+    elif not encounter:
+        print("GAME OVER!")
