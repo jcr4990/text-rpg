@@ -24,13 +24,15 @@ def battle(player, enemy):
     while True:
         dmg_dealt = random.randint(0, player.damage)
         enemy.hp = enemy.hp - dmg_dealt
-        print(f"{player.name} attacks {enemy.name} dealing {dmg_dealt} points of damage! {enemy.hp} health remaining.")
+        print(f"{player.name} attacks {enemy.name} dealing {round(dmg_dealt)} points of damage! {round(enemy.hp)} health remaining.")
 
         premitigated_damage = random.randint(0, enemy.damage)
-        mitigated_damage = player.ac * 0.25
+        mitigated_damage = player.ac * 0.20
         dmg_received = premitigated_damage - mitigated_damage
+        if dmg_received <= 0:
+            dmg_received = 0
         player.hp = player.hp - dmg_received
-        print(f"{enemy.name} attacks {player.name} dealing {dmg_received} points of damage! {mitigated_damage} mitigated! {player.hp} health remaining.")
+        print(f"{enemy.name} attacks {player.name} dealing {round(dmg_received)} points of damage! {round(mitigated_damage)} mitigated! {round(player.hp)} health remaining.")
 
         if player.hp <= 0 or enemy.hp <= 0:
             break
@@ -38,11 +40,11 @@ def battle(player, enemy):
         input()
 
 # testing combat loop
-# for i in range(20):
-#     player = Player("Macc", 15, 1, [])
-#     enemy = Enemy.random(15)
-#     battle(player, enemy)
-#     input()
+for i in range(20):
+    player = Player("Macc", 15, 1, [])
+    enemy = Enemy.random(15)
+    battle(player, enemy)
+    input()
 
 
 input("Welcome to blablabla! Press 'Enter' to advance the game dialogue.")

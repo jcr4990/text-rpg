@@ -13,6 +13,7 @@ class Enemy:
     def is_alive(self):
         return self.hp > 0
 
+    @staticmethod
     def random(level):
         name = random.choice(enemy_names)
         hp = (level * 0.1 * 100) + random.randint(0, level * 0.1 * 10)
