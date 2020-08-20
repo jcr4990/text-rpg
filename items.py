@@ -25,7 +25,7 @@ class Weapon(Item):
 
 
 
-rusty_short_sword = Weapon("Rusty Short Sword","It's rusty and not very sharp but it's better than nothing.", "1", "4")
+rusty_short_sword = Weapon("Rusty Short Sword", "It's rusty and not very sharp but it's better than nothing.", "1", "4")
 print(rusty_short_sword)
 
 # gold = Gold(5)
